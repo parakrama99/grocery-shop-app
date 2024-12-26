@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pet_shop_app/const.dart';
+import 'package:pet_shop_app/pages/payment_page.dart';
 import 'package:pet_shop_app/provider/cart_provider.dart';
 import 'package:pet_shop_app/widgets/cartItem.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,9 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    // Accessing the CartProvider instance to manage the cart state
     CartProvider cartProvider = Provider.of<CartProvider>(context);
+    
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
@@ -23,7 +26,7 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: Colors.transparent,
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // Navigates back to the previous screen
           },
           child: Icon(
             Icons.arrow_back_ios_rounded,
@@ -32,7 +35,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         title: Text(
-          'Cart',
+          'Cart', // Title for the cart screen
           style: poppin.copyWith(
               fontSize: 18, color: black, fontWeight: FontWeight.w600),
         ),
@@ -47,12 +50,13 @@ class _CartPageState extends State<CartPage> {
             child: cartProvider.carts.isNotEmpty
                 ? Text.rich(TextSpan(children: [
                     TextSpan(
-                        text: '${cartProvider.carts.length} ',
+                        text:
+                            '${cartProvider.carts.length} ', // Display the cart item count
                         style: poppin.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w600)),
                     TextSpan(
                         text:
-                            cartProvider.carts.length > 1 ? ' Items' : ' Item',
+                            cartProvider.carts.length > 1 ? ' Items' : ' Item', // Singular or plural item label
                         style: poppin.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w400)),
                   ]))
@@ -80,6 +84,7 @@ class _CartPageState extends State<CartPage> {
                                     children: [
                                       SlidableAction(
                                         onPressed: (context) {
+                                          // Removes an item from the cart
                                           cartProvider.remoceCart(
                                               cartProvider.carts[index].id!);
                                         },
@@ -93,7 +98,7 @@ class _CartPageState extends State<CartPage> {
                                       )
                                     ]),
                                 child:
-                                    CartItem(cart: cartProvider.carts[index])),
+                                    CartItem(cart: cartProvider.carts[index])), // Displays cart items
                           ),
                         )),
               ),
@@ -103,7 +108,7 @@ class _CartPageState extends State<CartPage> {
       ),
       bottomNavigationBar: AnimatedContainer(
         duration: const Duration(seconds: 2),
-        height: cartProvider.carts.isNotEmpty ? 265 : 0,
+        height: cartProvider.carts.isNotEmpty ? 265 : 0, // Shows the bottom container when the cart is not empty
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           color: white,
@@ -126,7 +131,7 @@ class _CartPageState extends State<CartPage> {
                   children: [
                     Text.rich(TextSpan(children: [
                       TextSpan(
-                          text: '${cartProvider.carts.length} ',
+                          text: '${cartProvider.carts.length} ', // Display the number of items in the cart
                           style: poppin.copyWith(
                               fontSize: 16,
                               color: grey,
@@ -134,14 +139,14 @@ class _CartPageState extends State<CartPage> {
                       TextSpan(
                           text: cartProvider.carts.length > 1
                               ? ' Items'
-                              : ' Item',
+                              : ' Item', // Plural or singular label for items
                           style: poppin.copyWith(
                               fontSize: 16,
                               color: grey,
                               fontWeight: FontWeight.w200)),
                     ])),
                     Text(
-                      '\$${(cartProvider.totalPrice()).toStringAsFixed(2)}',
+                      'Rs.${(cartProvider.totalPrice()).toStringAsFixed(2)}', // Display total price of cart
                       style: poppin.copyWith(
                           fontSize: 16,
                           color: grey,
@@ -150,38 +155,19 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
                 const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Tax',
-                      style: poppin.copyWith(
-                          fontSize: 16,
-                          color: grey,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      '\$${(cartProvider.totalPrice() * 0.1).toStringAsFixed(2)}',
-                      style: poppin.copyWith(
-                          fontSize: 16,
-                          color: grey,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total',
+                      'Total', // Label for total cost
                       style: poppin.copyWith(
                           fontSize: 18,
                           color: black,
                           fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      '\$${(cartProvider.totalPrice() * 1.1).toStringAsFixed(2)}',
+                      'Rs.${cartProvider.totalPrice().toStringAsFixed(2)}', // Total cost value
                       style: poppin.copyWith(
                           fontSize: 18,
                           color: black,
@@ -193,16 +179,26 @@ class _CartPageState extends State<CartPage> {
                 Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    color: green,
+                    color: Colors.green, // Checkout button color
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
-                    child: Text(
-                      'Check out',
-                      style: poppin.copyWith(
-                          fontSize: 16,
-                          color: white,
-                          fontWeight: FontWeight.w600),
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the payment page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentPage()),
+                        );
+                      },
+                      child: Text(
+                        'Check out', // Checkout button text
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 )

@@ -77,7 +77,7 @@ class ProductItem extends StatelessWidget {
                       fontSize: 16, color: black, fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  '\$${(product.price)!.toStringAsFixed(2)}',
+                  'Rs.${(product.price)!.toStringAsFixed(2)}',
                   style: poppin.copyWith(
                       fontSize: 18, color: black, fontWeight: FontWeight.w600),
                 ),

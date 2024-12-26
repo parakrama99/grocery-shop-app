@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String selectedCategory = 'Foods';
+  String selectedCategory = 'Fruits';
   int selectedPage = 0;
   List<CategoryModel> dataCategory = [];
   List<ProductModel> dataProduct = [];
@@ -42,16 +42,31 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Future<void> getProduct() async {
+  //   final String response =
+  //       await rootBundle.loadString('assets/json/product.json');
+  //   final data = json.decode(response);
+  //   setState(() {
+  //     for (var element in data['product']) {
+  //       dataProduct.add(ProductModel.fromJson(element));
+  //     }
+  //   });
+  // }
   Future<void> getProduct() async {
-    final String response =
-        await rootBundle.loadString('assets/json/product.json');
-    final data = json.decode(response);
-    setState(() {
-      for (var element in data['product']) {
-        dataProduct.add(ProductModel.fromJson(element));
+  final String response =
+      await rootBundle.loadString('assets/json/product.json');
+  final data = json.decode(response);
+  setState(() {
+    dataProduct.clear(); // Clear previous products
+    for (var element in data['product']) {
+      ProductModel product = ProductModel.fromJson(element);
+      if (product.category == selectedCategory) {  // Match the selected category
+        dataProduct.add(product);
       }
-    });
-  }
+    }
+  });
+}
+
 
   @override
   void initState() {
@@ -81,7 +96,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('mop Petshop',
+                  Text('grocery shop',
                       style: poppin.copyWith(
                         fontSize: 20,
                         color: black,
@@ -117,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                         color: deepPurple,
                                       ),
                                       child: Text(
-                                        '${cartProvider.carts.length}',
+                                        'Rs.${cartProvider.carts.length}',
                                         style: poppin.copyWith(color: white),
                                       )),
                                 )
@@ -141,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                 child: TextFormField(
                   decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Search food, accesoris, etc ...',
+                      hintText: 'Search fruits,vegetables, etc ...',
                       hintStyle:
                           poppin.copyWith(color: deepPurple.withOpacity(0.6)),
                       prefixIcon: const Icon(
@@ -154,28 +169,31 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                    dataCategory.length,
-                    (index) => Padding(
-                          padding: index == 0
-                              ? const EdgeInsets.only(left: 20, right: 20)
-                              : const EdgeInsets.only(right: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedCategory = dataCategory[index].text!;
-                              });
-                            },
-                            child: CategoryItem(
-                              category: dataCategory[index],
-                              selectedCategory: selectedCategory,
-                            ),
-                          ),
-                        )),
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    children: List.generate(
+        dataCategory.length,
+        (index) => Padding(
+              padding: index == 0
+                  ? const EdgeInsets.only(left: 20, right: 20)
+                  : const EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedCategory = dataCategory[index].text!;
+                    getProduct();  // Reload products based on category
+                  });
+                },
+                child: CategoryItem(
+                  category: dataCategory[index],
+                  selectedCategory: selectedCategory,
+                ),
               ),
-            ),
+            )),
+  ),
+),
+
+
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -269,7 +287,7 @@ class _HomePageState extends State<HomePage> {
                     child: Transform.rotate(
                       angle: -0.15,
                       child: Image.asset(
-                        'assets/foods/meow-mix1.png',
+                        'assets/foods/a.jpg',
                         height: 120,
                       ),
                     ),
@@ -280,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                     child: Transform.rotate(
                       angle: 0.3,
                       child: Image.asset(
-                        'assets/foods/authority1.png',
+                        'assets/foods/cho.jpg',
                         height: 120,
                       ),
                     ),
@@ -291,7 +309,7 @@ class _HomePageState extends State<HomePage> {
                     child: Transform.rotate(
                       angle: 0,
                       child: Image.asset(
-                        'assets/foods/royal-canin1.png',
+                        'assets/foods/g.jpg',
                         height: 120,
                       ),
                     ),
@@ -314,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                           style: poppin.copyWith(color: white, fontSize: 14),
                         ),
                         Text(
-                          '\$${40.00}',
+                          'Rs.${40.00}',
                           style: poppin.copyWith(
                               fontSize: 20,
                               color: black,

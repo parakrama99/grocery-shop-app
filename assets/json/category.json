@@ -1,16 +1,16 @@
 {
     "category": [
         {
-            "image": "food.png",
-            "text": "Foods"
+            "image": "f.jpg",
+            "text": "Fruits"
         },
         {
-            "image": "accesories.png",
-            "text": "Accsories"
+            "image": "vegetables.jpg",
+            "text": "Vegetables"
         },
         {
-            "image": "toy.png",
-            "text": "Toys"
+            "image": "s.jpg",
+            "text": "Snacks"
         }
     ]
 }

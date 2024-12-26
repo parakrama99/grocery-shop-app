@@ -52,7 +52,7 @@ class CartItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  '\$${(cart.product!.price!).toStringAsFixed(2)}',
+                  'Rs.${(cart.product!.price!).toStringAsFixed(2)}',
                   style: poppin.copyWith(
                       fontSize: 18, fontWeight: FontWeight.w600, color: black),
                 ),
