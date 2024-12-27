@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_shop_app/const.dart';
-import 'package:pet_shop_app/models/category_model.dart';
-import 'package:pet_shop_app/models/product_model.dart';
-import 'package:pet_shop_app/pages/cart.dart';
-import 'package:pet_shop_app/pages/detail.dart';
-import 'package:pet_shop_app/provider/cart_provider.dart';
-import 'package:pet_shop_app/widgets/category.dart';
-import 'package:pet_shop_app/widgets/product.dart';
+import 'package:grocery_shop/const.dart';
+import 'package:grocery_shop/models/category_model.dart';
+import 'package:grocery_shop/models/product_model.dart';
+import 'package:grocery_shop/pages/cart.dart';
+import 'package:grocery_shop/pages/detail.dart';
+import 'package:grocery_shop/provider/cart_provider.dart';
+import 'package:grocery_shop/widgets/category.dart';
+import 'package:grocery_shop/widgets/product.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,16 +42,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // Future<void> getProduct() async {
-  //   final String response =
-  //       await rootBundle.loadString('assets/json/product.json');
-  //   final data = json.decode(response);
-  //   setState(() {
-  //     for (var element in data['product']) {
-  //       dataProduct.add(ProductModel.fromJson(element));
-  //     }
-  //   });
-  // }
+
   Future<void> getProduct() async {
   final String response =
       await rootBundle.loadString('assets/json/product.json');

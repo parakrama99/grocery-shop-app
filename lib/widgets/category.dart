@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop_app/const.dart';
-import 'package:pet_shop_app/models/category_model.dart';
+import 'package:grocery_shop/const.dart';
+import 'package:grocery_shop/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
   final CategoryModel category;

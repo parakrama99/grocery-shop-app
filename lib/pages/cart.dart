@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:pet_shop_app/const.dart';
-import 'package:pet_shop_app/pages/payment_page.dart';
-import 'package:pet_shop_app/provider/cart_provider.dart';
-import 'package:pet_shop_app/widgets/cartItem.dart';
+import 'package:grocery_shop/const.dart';
+import 'package:grocery_shop/pages/payment_page.dart';
+import 'package:grocery_shop/provider/cart_provider.dart';
+import 'package:grocery_shop/widgets/cartItem.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         title: Text(
-          'Cart', // Title for the cart screen
+          'Cart', 
           style: poppin.copyWith(
               fontSize: 18, color: black, fontWeight: FontWeight.w600),
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop_app/pages/home_page.dart';
-import 'package:pet_shop_app/provider/cart_provider.dart';
+import 'package:grocery_shop/pages/home_page.dart';
+import 'package:grocery_shop/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {

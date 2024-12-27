@@ -1,23 +1,26 @@
-# Pet Shop App
+# Grocery Shop App
 
-## Support
+This is a Flutter-based app for browsing and purchasing groceries. Users can view various categories of grocery items, add them to their cart, and complete the purchase seamlessly.
 
-https://www.buymeacoffe.com/syarifhidayat
-https://sociabuzz.com/syarifhidayatullah2020/tribe
+## Features
 
-## UI/UX
+- Browse different grocery categories (fruits, vegetables, dairy, snacks, etc.).
+- Add items to the shopping cart.
+- View product details and prices.
+- Complete purchases through a simple checkout process.
+- User-friendly interface with smooth navigation.
 
-https://dribbble.com/shots/15195744-Mop-Petshop-App
+## Installation
 
-## Youtube
-
-https://youtu.be/WifMFYoSvrc
+1. Clone the repository.
+2. Run `flutter pub get` to install dependencies.
+3. Run the app with `flutter run`.
 
 ## Preview
 
 <p align="middle">
-<img src="assets/preview/home.png" alt="HomePage" width="200">
-<img src="assets/preview/detail.png" alt="Detail" width="200">
-<img src="assets/preview/cart.png" alt="Cart" width="200">
+<img src="assets/preview/p1.png" alt="HomePage" width="200">
+<img src="assets/preview/p2.png" alt="Detail" width="200">
+<img src="assets/preview/p3.png" alt="Cart" width="200">
 </p>
-<img src="https://visitor-badge.laobi.icu/badge?page_id=sya-hid.pet-shop-app"/>  
+<img src="assets/preview/p4.png" alt="Cart" width="200">

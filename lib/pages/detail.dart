@@ -1,8 +1,8 @@
 // Importing necessary packages
 import 'package:flutter/material.dart';
-import 'package:pet_shop_app/const.dart';  // Custom constants like colors and text styles
-import 'package:pet_shop_app/models/product_model.dart';  // Product model
-import 'package:pet_shop_app/provider/cart_provider.dart';  // Cart provider to manage cart state
+import 'package:grocery_shop/const.dart';  // Custom constants like colors and text styles
+import 'package:grocery_shop/models/product_model.dart';  // Product model
+import 'package:grocery_shop/provider/cart_provider.dart';  // Cart provider to manage cart state
 import 'package:provider/provider.dart';  // To provide and consume CartProvider
 
 class DetailPage extends StatefulWidget {
@@ -34,7 +34,7 @@ class _DetailPageState extends State<DetailPage> {
           },
           child: Icon(
             Icons.arrow_back_ios_rounded,  // Back arrow icon
-            color: black.withOpacity(0.7),  // Icon color
+            color: black.withOpacity(0.7),  
             size: 18,  // Icon size
           ),
         ),
