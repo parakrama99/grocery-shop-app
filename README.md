@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Grocery Shop App
 
 This is a Flutter-based app for browsing and purchasing groceries. Users can view various categories of grocery items, add them to their cart, and complete the purchase seamlessly.
@@ -24,3 +25,6 @@ This is a Flutter-based app for browsing and purchasing groceries. Users can vie
 <img src="assets/preview/p3.png" alt="Cart" width="200">
 </p>
 <img src="assets/preview/p4.png" alt="Cart" width="200">
+=======
+# grocery-shop-app
+>>>>>>> f11fe30ccaee23439a2af569958d72d312e4a2f4
